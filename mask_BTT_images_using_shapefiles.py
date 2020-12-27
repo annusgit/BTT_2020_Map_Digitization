@@ -56,9 +56,9 @@ def gdal_warp_masking(district, shapefile_path, image_path, destination_path):
 if __name__ == "__main__":
     for year in [2014, 2016, 2017, 2018, 2019, 2020]:
         for district in all_districts:
-            shapefile_path = os.path.join(shapefile_masks_path, f'{district}.shp')
-            image_path = os.path.join(images_path, f'landsat8_4326_30_{year}_region_{district}.tif')
-            destination_path = destination_path, f'clipped_{district}_{year}.tif'
+            shapefile_path = os.path.join(shapefile_masks_path, '{}.shp'.format(district))
+            image_path = os.path.join(images_path, 'landsat8_4326_30_{}_region_{}.tif'.format(year, district))
+            destination_path = os.path.join(destination_path, 'clipped_{}_{}.tif'.format(district, year))
             gdal_warp_masking(district=district, shapefile_path=shapefile_path, image_path=image_path, destination_path=destination_path)
             # streched_image = get_clipped_image(this_path=f"clipped_images\\clipped_{district}.tif")
             # # show the masked image
