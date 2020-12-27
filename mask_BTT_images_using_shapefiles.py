@@ -15,8 +15,8 @@ all_districts = ["abbottabad", "battagram", "buner", "chitral", "hangu", "haripu
 
 # remote GCP
 shapefile_masks_path = "/home/azulfiqar_bee15seecs/btt_shapefiles/"
-images_path = "/home/azulfiqar_bee15seecs/btt_shapefiles/BTT_2014_2020_unclipped_images/"
-destination_path = "/home/azulfiqar_bee15seecs/btt_shapefiles/BTT_2014_2020_clipped_images/"
+images_path = "/home/azulfiqar_bee15seecs/BTT_2014_2020_unclipped_images/"
+destination_path = "/home/azulfiqar_bee15seecs/BTT_2014_2020_clipped_images/"
 """
     gdalwarp -of GTiff -tr 0.00026949458523585804 -0.00026949458523585566 -tap -cutline "E:\\Forest Cover - Redo 2020\\Shapefiles_clipped_to_district_vectors\\shangla.shp" -cl shangla -crop_to_cutline "E:\\Forest Cover - Redo 2020\\Google Cloud - Training\\Training Data\\30m_4326_btt_2020_unclipped_images\\landsat8_4326_30_2015_region_shangla.tif" C:/Users/annus/AppData/Local/Temp/processing_DHAjdp/93bb4beb509b4ad99595d252f8886cc2/OUTPUT.tif
 """
