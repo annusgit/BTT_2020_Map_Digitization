@@ -1,4 +1,4 @@
-from main import get_clipped_image
+# from main import get_clipped_image
 import matplotlib.pyplot as plt
 import numpy as np
 import subprocess
