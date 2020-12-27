@@ -48,8 +48,7 @@ destination_path = "/home/azulfiqar_bee15seecs/btt_shapefiles/BTT_2014_2020_clip
 
 
 def gdal_warp_masking(district, shapefile_path, image_path, destination_path):
-    subprocess.call(f'gdalwarp -of GTiff -tr 0.00026949458523585804 -0.00026949458523585566 -tap -cutline "{shapefile_path}" -cl "{district}" '
-                    f'-crop_to_cutline "{image_path}" "{destination_path}"')
+    subprocess.call(f'gdalwarp -of GTiff -tr 0.00026949458523585804 -0.00026949458523585566 -tap -cutline "{shapefile_path}" -cl "{district}" -crop_to_cutline "{image_path}" "{destination_path}"')
     pass
 
 
