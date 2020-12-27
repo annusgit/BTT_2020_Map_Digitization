@@ -22,29 +22,29 @@ destination_path = "/home/azulfiqar_bee15seecs/btt_shapefiles/BTT_2014_2020_clip
 """
 
 
-def mask_this_district(district):
-    global all_districts, shapefile_masks_path, raster_masks_path, images_path
-    # read and prepare mask
-    this_shapefile_path = os.path.join(raster_masks_path, f"{district}_shapefile.tif")
-    ds = gdal.Open(this_shapefile_path)
-    assert ds.RasterCount == 1
-    shapefile_mask = ds.GetRasterBand(1).ReadAsArray()
-    # print(f"Shape: {shapefile_mask.shape}")
-    # read and prepare image
-    this_image_path = os.path.join(images_path, f"landsat8_4326_30_2015_region_{district}.tif")
-    ds = gdal.Open(this_image_path)
-    # mask the actual image
-    masked_bands = list()
-    for x in range(1, ds.RasterCount+1):
-        this_band = ds.GetRasterBand(x).ReadAsArray()
-        try:
-            assert this_band.shape == shapefile_mask.shape
-            masked_bands.append(np.multiply(this_band, shapefile_mask))
-        except AssertionError:
-            print(f"(ERROR): Fault in {district}. {this_band.shape} vs. {shapefile_mask.shape}")
-            return None
-    ds = None
-    return np.dstack(masked_bands)
+# def mask_this_district(district):
+#     global all_districts, shapefile_masks_path, raster_masks_path, images_path
+#     # read and prepare mask
+#     this_shapefile_path = os.path.join(raster_masks_path, f"{district}_shapefile.tif")
+#     ds = gdal.Open(this_shapefile_path)
+#     assert ds.RasterCount == 1
+#     shapefile_mask = ds.GetRasterBand(1).ReadAsArray()
+#     # print(f"Shape: {shapefile_mask.shape}")
+#     # read and prepare image
+#     this_image_path = os.path.join(images_path, f"landsat8_4326_30_2015_region_{district}.tif")
+#     ds = gdal.Open(this_image_path)
+#     # mask the actual image
+#     masked_bands = list()
+#     for x in range(1, ds.RasterCount+1):
+#         this_band = ds.GetRasterBand(x).ReadAsArray()
+#         try:
+#             assert this_band.shape == shapefile_mask.shape
+#             masked_bands.append(np.multiply(this_band, shapefile_mask))
+#         except AssertionError:
+#             print(f"(ERROR): Fault in {district}. {this_band.shape} vs. {shapefile_mask.shape}")
+#             return None
+#     ds = None
+#     return np.dstack(masked_bands)
 
 
 def gdal_warp_masking(district, shapefile_path, image_path, destination_path):
